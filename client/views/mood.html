@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading">{{date}} - Day {{days}}</div>
+        <div class="panel-body">
+            <legend><i class="ion-android-hand"></i> Hi {{name}}, How are you today?</legend>
+            <form method="post" ng-submit="updateMood()" name="moodForm">
+                <div class="form-group">
+                    <div class="btn-group" ng-model="user.moods" data-bs-radio-group required>
+                        <label class="btn btn-default">
+                            <input type="radio" value="happy">Happy
+                        </label>
+                        <label class="btn btn-default">
+                            <input type="radio" value="okay">Okay
+                        </label>
+                        <label class="btn btn-default">
+                            <input type="radio" value="unhappy">Unhappy
+                        </label>
+                    </div>
+                </div>
+                <button class="btn btn-lg btn-success" ng-disabled="moodForm.$invalid">Submit</button>
+            </form>
+        </div>
+    </div>
+    <!-- Angular Chart -->
+    <div ng-if="ready" class="panel panel-default">
+        <div class="panel-heading">Mood Statistics</div>
+        <div class="panel-body">
+            <div id="pieChart" ac-chart="chartType" ac-data="countData" ac-config="config"></div>
+            <div id="selfCare">
+                <h4 class="fitness">Steps: 795</h4>
+                <h4 class="heart-rate">Avg Heart-rate: 76 BPM</h4>
+                <hr>
+                <h4>Need a pick-me up?</h4>
+                <h6><img id="coach" src="./css/grounding.png" alt="Arivale Grounding Exercises"></i> Try these Grounding Exercises</h6>
+                <h6><img id="coach" src="./css/sandi_kaplan.jpg" alt="Sandi Kaplan Arivale Coach"> Check-in with your Arivale Coach</h6>
+            </div>
+        </div>
+    </div>
+</div>

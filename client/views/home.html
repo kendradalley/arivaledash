@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="panel panel-default">
+    <div class="panel-heading">Notifications</div>
+    <div class="panel-body">
+        <p>
+        	Hello! You have not logged your mood in the past few days!
+        </p>
+        
+        <p ng-if="!isAuthenticated()">
+        	Please <a href="/" ng-click="login($event)">Login</a></li> with your credentials to log your mood!
+        </p>
+        <p ng-if="isAuthenticated()">
+        	See your <a href="/#/mood">Mood Log</a>.
+        </p>
+    </div>
+    </div>
+</div>
+
+<div class="container">
+    <div ng-if="isAuthenticated()" class="panel panel-default">
+    <div class="panel-heading">Dashboard: 2016</div>
+    <div class="panel-body">
+        <img id="dashboard-img" src="./css/dashboard.png">
+    </div>
+    </div>
+</div>

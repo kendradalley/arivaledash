@@ -1,0 +1,27 @@
+{
+  "name": "mood-tracker",
+  "version": "0.0.1",
+  "description": "An app that keeps track of your mood everyday.",
+  "engines": {
+    "node": "4.4.7"
+  },
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "angular-chart.js": "^1.0.3",
+    "bcrypt": "^0.8.7",
+    "body-parser": "^1.15.2",
+    "bootstrap": "^3.3.7",
+    "d3": "^4.2.6",
+    "express": "^4.14.0",
+    "express-jwt": "^5.0.0",
+    "jsonwebtoken": "^7.1.9",
+    "jwt-simple": "^0.2.0",
+    "moment": "^2.15.1",
+    "mongoose": "^4.6.2",
+    "morgan": "^1.7.0",
+    "request": "^2.40.0"
+  }
+}
