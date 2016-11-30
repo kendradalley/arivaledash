@@ -13,7 +13,9 @@ A simple prototype to showcase the daily mood tracking user flow. User will log 
 
 ## Getting Started
 
+* Clone or fork repo
 * Run `npm install` to install dependencies
+* Run `foreman run nodemon` to run locally
 
 
 ## Technologies Used
