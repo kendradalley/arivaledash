@@ -77,18 +77,14 @@ angular.module('MoodTracker')
 		$scope.updateMood = function() {
 			
 			var mapData = function(data){
-				// console.log('data:::::', data);
 				return data.map(function(val){
 					return val['mood'];
 				});
 			};
 			UserService.logMood({
 				moods: $scope.user.moods
-			}).then(function(res) {
-				// console.log('res:::', res);
-				
+			}).then(function(res) {			
 				$alert(AlertService.getAlert('You have logged your mood'));
-				// console.log($scope.user.moods);
 				var newData = mapData(res.data);
 				var newCount = { };
 				for (var i = 0; i < newData.length; i++) {
@@ -96,7 +92,6 @@ angular.module('MoodTracker')
 						newCount[newData[val]] = (newCount[newData[val]] || 0) + 1;
 					})(i);
 				}	
-				// console.log('newCount:::', newCount);
 				setCountData(newCount);
 				// refresh count and mood data
 				$scope.ready = true;

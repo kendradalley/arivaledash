@@ -126,7 +126,7 @@ app.post('/auth/google', function(req, res) {
   var params = {
     code: req.body.code,
     client_id: req.body.clientId,
-    client_secret: config.HS_SECRET,
+    client_secret: config.GOOGLE_SECRET,
     redirect_uri: req.body.redirectUri,
     grant_type: 'authorization_code'
   };
@@ -172,7 +172,6 @@ app.post('/auth/google', function(req, res) {
           user.google = profile.sub;
           user.picture = profile.picture.replace('sz=50', 'sz=200');
           user.displayName = profile.name;
-          // user.accessToken = 
           user.save(function(err) {
             var token = createJWT(user);
             res.send({ token: token, user: user });
@@ -240,22 +239,16 @@ app.get('/api/messages', function(req, res) {
 
 // Update Mood Array
   app.put('/api/me/moods', ensureAuthenticated, function(req, res) {
-    // console.log('before user find:', req.user);
     User.findById(req.user, function(err, user) {
-      // console.log('mood before:' + req.user); //
       if (!user) {
-        // console.log('mood after:' + req.userId);
         return res.send({message: 'you are hitting mood error'});
       }
-      // console.log('user found:', user);
       console.log('req.body.mood:', req.body.moods);
       var new_mood = {
         mood: req.body.moods,
         created_date: moment().format('YYYY-MM-DD')
       };
       user.moods.push(new_mood);
-      //user.moods[moment().format('YYYY-MM-DD')] = req.body.mood;
-      // user.moods = req.body.moods;
       user.markModified('moods');
       console.log(user);
       user.save(function(err, user) {
